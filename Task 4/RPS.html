@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="RPS.css">
+</head>
+
+<body>
+    <div class="scoreplayer">
+        <h1>WINS</h1>
+        <h2 class="dis">0</h2>
+    </div>
+    <div class="section">
+        <h1>Rock Paper Scissors</h1>
+        <div class="container">
+            <div class="sec">
+                <div class="left">
+                    <img src="rl.png" alt="">
+                    <img src="pl.png" alt="">
+                    <img src="sl.png" alt="">
+                </div>
+                <div class="right">
+                    <img src="rr.png" alt="">
+                    <img src="pr.png" alt="">
+                    <img src="sr.png" alt="">
+                </div>
+            </div>
+            <div class="choice">
+                <div class="image">
+                    <img onclick="selected('rock')" src="rock.png" alt="">
+                    <img onclick="selected('paper')" src="paper.png" alt="">
+                    <img onclick="selected('scissors')" src="scissors.png" alt="">
+                </div>
+                <div class="text">
+                    <h3 style="padding-left: 20px;">Rock</h3>
+                    <h3 style="padding-left: 15px;">Paper</h3>
+                    <h3>Scissors</h3>
+                </div>
+            </div>
+        </div>
+        <div class="instruction">
+            <button onclick="instruction()" class="btn">
+                Instructions
+            </button>
+        </div>
+    </div>
+    <div class="scorecomputer">
+        <h1>WINS</h1>
+        <h2 class="dis">0</h2>
+    </div>
+    <div id="overlay"></div>
+    <div id="ins" class="textINS">
+        <h3>Instructions</h3>
+        <p>Click on the images to select your choice. Every round has five turns. Each turn is countable only if
+            both the player's choice and computer's choice is different. Player can only win if he wins more turns
+            then computer.</p>
+        <button onclick="OK()">OK</button>
+    </div>
+    <div id="over" class="instruction">
+        <div id="overlay"></div>
+        <div style="display: block flex;" class="textINS">
+            <h2 id="res"></h2>
+            <div class="cont">
+                <div class="P">
+                    <h3>Player</h3>
+                    <div id="pside">
+                        <h5>Win :&nbsp;</h5>
+                        <h5>0</h5>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="C">
+                    <h3>Computer</h3>
+                    <div id="cside">
+                        <h5>Win :&nbsp;</h5>
+                        <h5>0</h5>
+                    </div>
+                </div>
+            </div>
+            <button id="reloadButton">Next Game</button>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    let pcounter = 0;
+    let ccounter = 0;
+
+    function selected(x) {
+        let image = $(".sec img");
+        image.css("display", "none");
+
+        let array = [3, 4, 5];
+        let randomInteger = Math.floor(Math.random() * array.length);
+        image.eq(array[randomInteger]).css("display", "block");
+
+        let score = $(".dis");
+        if (x == "rock") {
+            image.eq(0).css("display", "block");
+            if (randomInteger == 1) {
+                ccounter++;
+                score.eq(1).text(ccounter);
+                score.eq(1).css("display", "block");
+            } else if (randomInteger == 2) {
+                pcounter++;
+                score.eq(0).text(pcounter);
+                score.eq(0).css("display", "block");
+            }
+        } else if (x == "paper") {
+            image.eq(1).css("display", "block");
+            if (randomInteger == 2) {
+                ccounter++;
+                score.eq(1).text(ccounter);
+                score.eq(1).css("display", "block");
+            } else if (randomInteger == 0) {
+                pcounter++;
+                score.eq(0).text(pcounter);
+                score.eq(0).css("display", "block");
+            }
+        } else if (x == "scissors") {
+            image.eq(2).css("display", "block");
+            if (randomInteger == 0) {
+                ccounter++;
+                score.eq(1).text(ccounter);
+                score.eq(1).css("display", "block");
+            } else if (randomInteger == 1) {
+                pcounter++;
+                score.eq(0).text(pcounter);
+                score.eq(0).css("display", "block");
+            }
+        }
+        if (pcounter + ccounter == 5) {
+            $("#overlay").css("display", "block");
+            setTimeout(check, 1000);
+        }
+
+
+        $("#reloadButton").on("click", function () {
+            setTimeout(function () {
+                location.reload();
+            }, 500);
+        });
+    }
+    function instruction() {
+        let ins = $("#ins");
+        ins.css("display", "block flex");
+        $("#overlay").css("display", "block");
+    }
+
+    function OK() {
+        $("#ins").css("display", "none");
+        $("#overlay").css("display", "none");
+    }
+
+    function check() {
+        $("#over").css("display", "block flex");
+        if (pcounter > ccounter) {
+            $("#res").text("YOU WON");
+        } else {
+            $("#res").text("YOU LOSS");
+        }
+        let score = $("h5");
+        score.eq(1).text(pcounter);
+        score.eq(3).text(ccounter);
+    }
+
+</script>
+
+</html>
