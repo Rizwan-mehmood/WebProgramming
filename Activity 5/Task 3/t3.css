@@ -1,0 +1,28 @@
+.container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container img
+{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+button
+{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: Comic Sans Ms;
+    margin: 10px;
+    width: 150px;
+    height: 40px;
+}
+button:hover
+{
+    cursor: pointer;
+}
