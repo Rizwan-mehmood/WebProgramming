@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <link rel="stylesheet" href="t5.css">
+</head>
+
+<body>
+    <div id="cont" class="container">
+        <h1>Click On Any Heading Below To Get Id and Class</h1>
+        <h1 id="head1" class="heading">Hello World!</h1>
+        <h2 id="head2" class="heading">Hello World!</h2>
+        <h3 id="head3" class="heading">Hello World!</h3>
+        <h4 id="head4" class="heading">Hello World!</h4>
+        <h5 id="head5" class="heading">Hello World!</h5>
+        <h6 id="head6" class="heading">Hello World!</h6>
+    </div>
+    <div class="res">
+        <div class="id">
+            <h1>ID</h1>
+            <h4></h4>
+        </div>
+        <div class="class">
+            <h1>CLASS</h1>
+            <h4></h4>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.heading').click(function () {
+            var headingId = $(this).attr('id');
+            var headingClass = $(this).attr('class');
+            $('.res .id h4').text(headingId);
+            $('.res .class h4').text(headingClass);
+        });
+    });
+</script>
+
+</html>

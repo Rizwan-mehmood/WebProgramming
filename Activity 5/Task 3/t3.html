@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="t3.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <button id="btn">Hide</button>
+        <img id="image" src="rizwan.jpg" alt="Error">
+    </div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        let $btn = $("#btn");
+        let $image = $("#image");
+        $btn.click(function () {
+            if ($image.is(":visible")) {
+                $image.hide();
+                $btn.text("Show");
+            } else {
+                $image.show();
+                $btn.text("Hide");
+            }
+        });
+    });
+</script>
+
+</html>
