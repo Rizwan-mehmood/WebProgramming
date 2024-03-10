@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+table,
+td,
+th {
+    border: 1px solid black;
+}
+
+td,
+th {
+    width: 200px;
+}
+
+#rmv {
+    width: 30%;
+    margin: 20px;
+    border: none;
+    background-color: black;
+    height: 30px;
+    color: white;
+    border-radius: 20px;
+}
+
+#rmv:hover {
+    cursor: pointer;
+}
+
+input {
+    margin: 0px 20px;
+    border-radius: 20px;
+    padding: 0px 10px;
+}
