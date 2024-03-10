@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Find total width of an element (including width, padding and border) in jQuery.</title>
+    <link rel="stylesheet" href="t6.css">
+</head>
+
+<body>
+    <p id="myText">jQuery Exercises, Practice, Solution</p>
+    <h3 id="width"></h3>
+    <h3 id="padding"></h3>
+    <h3 id="border"></h3>
+</body>
+<script>
+    $(document).ready(function () {
+        var totalWidth = $('#myText').outerWidth(true);
+        var padding = $('#myText').css('padding');
+        var border = $('#myText').css('border');
+        $('#width').text(`Width = ${totalWidth}`);
+        $('#padding').text(`Padding = ${padding}`);
+        $('#border').text(`Border = ${border}`);
+    });
+</script>
+
+</html>
